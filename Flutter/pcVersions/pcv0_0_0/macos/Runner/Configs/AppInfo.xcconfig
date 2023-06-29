@@ -8,7 +8,7 @@
 PRODUCT_NAME = foodtelligence
 
 // The application's bundle identifier
-PRODUCT_BUNDLE_IDENTIFIER = com.example.foodtelligence
+PRODUCT_BUNDLE_IDENTIFIER = com.foodtelligence.foodtelligence
 
 // The copyright displayed in application information
-PRODUCT_COPYRIGHT = Copyright © 2023 com.example. All rights reserved.
+PRODUCT_COPYRIGHT = Copyright © 2023 com.foodtelligence. All rights reserved.
