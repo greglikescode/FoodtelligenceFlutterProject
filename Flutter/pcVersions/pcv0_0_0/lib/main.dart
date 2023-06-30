@@ -1,6 +1,9 @@
+// ignore_for_file: avoid_print
+
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
+import 'package:foodtelligence/views/login_view.dart'; // Imports login_view.dart to main so it can be used. Awesome!
 import 'firebase_options.dart';
 
 void main() {
@@ -12,7 +15,9 @@ void main() {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
       ),
-      home: const RegisterView(),
+
+      // HOW TO SELECT WHICH PAGE YOU ARE LOOKING AT
+      home: const LoginView(),
     ),
   );
 }
@@ -74,12 +79,23 @@ class RegisterViewState extends State<RegisterView> {
                     onPressed: () async {
                       final email = _email.text;
                       final password = _password.text;
-
-                      final userCredential = await FirebaseAuth.instance
-                          .createUserWithEmailAndPassword(
-                              email: email, password: password);
-                      print(
-                          userCredential); // If we look, this function will return a user credential
+                      try {
+                        // ignore: unused_local_variable
+                        final userCredential = await FirebaseAuth.instance
+                            .createUserWithEmailAndPassword(
+                                email: email, password: password);
+                        print(userCredential);
+                      } on FirebaseAuthException catch (e) {
+                        if (e.code == 'weak-password') {
+                          print('Weak Password');
+                        } else if (e.code == 'email-already-in-use') {
+                          print('Email is already in use bro.');
+                        } else if (e.code == 'invalid-email') {
+                          print('Invalid Email Entered');
+                        } else {
+                          print(e.code);
+                        }
+                      }
                     },
                     child: const Text('Register'),
                   ),
