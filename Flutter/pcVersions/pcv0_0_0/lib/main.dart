@@ -1,11 +1,10 @@
-// ignore_for_file: avoid_print
-
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:foodtelligence/views/login_view.dart'; // Imports login_view.dart to main so it can be used. Awesome!
 import 'package:foodtelligence/views/register_view.dart';
 import 'package:foodtelligence/views/verify_email_view.dart';
+import 'constants/routes.dart';
 import 'firebase_options.dart';
 // Now you have to say devtools.log to get the log function from dart B)
 import 'dart:developer' as devtools show log;
@@ -14,7 +13,7 @@ void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
     MaterialApp(
-      title: 'Flutter Demo',
+      title: 'Foodtelligencev0',
       theme: ThemeData(
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.blue),
         useMaterial3: true,
@@ -23,9 +22,10 @@ void main() {
       // HOW TO SELECT WHICH PAGE YOU ARE LOOKING AT
       home: const HomePage(),
       routes: {
-        '/login/': (context) => const LoginView(),
-        '/register/': (context) => const RegisterView(),
-        '/main/': (context) => const MainView()
+        loginRoute: (context) => const LoginView(),
+        registerRoute: (context) => const RegisterView(),
+        mainRoute: (context) => const MainView(),
+        verifyEmailRoute: (context) => const VerifyEmailView(),
       },
     ),
   );
@@ -99,7 +99,7 @@ class _MainViewState extends State<MainView> {
                       devtools.log('Logging user out! Going to login!');
                       await FirebaseAuth.instance.signOut();
                       Navigator.of(context).pushNamedAndRemoveUntil(
-                        '/login/',
+                        loginRoute,
                         (_) => false,
                       );
                     }
@@ -123,8 +123,8 @@ Future<bool> showLogOutDialog(BuildContext context) {
     context: context,
     builder: (context) {
       return AlertDialog(
-        title: const Text('Sign Out'),
-        content: const Text('Are you sure you want to sign out there champ?'),
+        title: const Text('Log Out'),
+        content: const Text('Are you sure you want to log out there champ?'),
         actions: [
           TextButton(
             onPressed: () {
