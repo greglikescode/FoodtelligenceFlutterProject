@@ -1,8 +1,7 @@
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
-import 'dart:developer' as devtools show log;
-
 import 'package:foodtelligence/constants/routes.dart';
+import 'package:foodtelligence/services/auth/auth_exceptions.dart';
+import 'package:foodtelligence/services/auth/auth_service.dart';
 import '../utilities/show_error_dialog.dart';
 
 class LoginView extends StatefulWidget {
@@ -56,48 +55,38 @@ class _LoginViewState extends State<LoginView> {
               final password = _password.text;
 
               try {
-                await FirebaseAuth.instance.signInWithEmailAndPassword(
+                await AuthService.firebase().logIn(
                   email: email,
                   password: password,
                 );
-                final user = FirebaseAuth.instance.currentUser;
-                if (user?.emailVerified ?? false) {
+                final user = AuthService.firebase().currentUser;
+                if (user?.isEmailVerified ?? false) {
                   // Users email is verified
-
-                  devtools.log('Going to main now!');
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     mainRoute,
                     (route) => false,
                   );
                 } else {
                   // User's email is NOT verified!!!
-                  devtools.log('Going to verify email now!');
                   Navigator.of(context).pushNamedAndRemoveUntil(
                     verifyEmailRoute,
                     (route) => false,
                   );
                 }
-              } on FirebaseAuthException catch (e) {
-                if (e.code == 'user-not-found') {
-                  await showErrorDialog(
-                    context,
-                    'User doesn\'t exist!!!!!!!!!!!!!!',
-                  );
-                } else if (e.code == 'wrong-password') {
-                  await showErrorDialog(
-                    context,
-                    '"Incorrect Password bitch!" - Jesse',
-                  );
-                } else {
-                  await showErrorDialog(
-                    context,
-                    'Error: ${e.code}',
-                  );
-                }
-              } catch (e) {
+              } on UserNotFoundAuthException {
                 await showErrorDialog(
                   context,
-                  e.toString(),
+                  'User doesn\'t exist!!!!!!!!!!!!!!',
+                );
+              } on WrongPasswordAuthException {
+                await showErrorDialog(
+                  context,
+                  '"Incorrect Password bitch!" - Jesse',
+                );
+              } on GenericAuthException {
+                await showErrorDialog(
+                  context,
+                  'Authentication error',
                 );
               }
             },
