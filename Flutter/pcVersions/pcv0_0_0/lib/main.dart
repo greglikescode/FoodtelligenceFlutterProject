@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:foodtelligence/constants/routes.dart';
 import 'package:foodtelligence/services/auth/auth_service.dart';
 import 'package:foodtelligence/views/login_view.dart';
 import 'package:foodtelligence/views/main_view.dart';
 import 'package:foodtelligence/views/register_view.dart';
 import 'package:foodtelligence/views/verify_email_view.dart';
-import 'constants/routes.dart';
 import 'dart:developer' as devtools
     show
         log; // Now you have to say devtools.log to get the log function from dart B)
@@ -42,7 +42,6 @@ class HomePage extends StatelessWidget {
           switch (snapshot.connectionState) {
             case ConnectionState.done:
               final user = AuthService.firebase().currentUser;
-              devtools.log(user.toString());
 
               // If there IS a user..
               if (user != null) {

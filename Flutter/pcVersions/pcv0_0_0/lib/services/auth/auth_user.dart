@@ -1,5 +1,5 @@
 import 'package:firebase_auth/firebase_auth.dart' show User;
-import 'package:flutter/foundation.dart';
+import 'package:flutter/material.dart';
 
 // immutable means this class and all it's subclasses MUST HAVE VALUES THAT CANNOT CHANGE.
 @immutable

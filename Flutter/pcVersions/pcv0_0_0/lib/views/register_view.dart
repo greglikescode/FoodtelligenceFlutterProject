@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:foodtelligence/constants/routes.dart';
 import 'package:foodtelligence/services/auth/auth_exceptions.dart';
 import 'package:foodtelligence/services/auth/auth_service.dart';
-import '../utilities/show_error_dialog.dart';
+import 'package:foodtelligence/utilities/show_error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
@@ -38,17 +38,23 @@ class RegisterViewState extends State<RegisterView> {
       body: Column(
         children: [
           TextField(
-              controller: _email,
-              enableSuggestions: false,
-              autocorrect: false,
-              keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(hintText: 'top GEmail')),
+            controller: _email,
+            enableSuggestions: false,
+            autocorrect: false,
+            keyboardType: TextInputType.emailAddress,
+            decoration: const InputDecoration(
+              hintText: 'top GEmail',
+            ),
+          ),
           TextField(
-              controller: _password,
-              obscureText: true,
-              enableSuggestions: false,
-              autocorrect: false,
-              decoration: const InputDecoration(hintText: 'pAssword')),
+            controller: _password,
+            obscureText: true,
+            enableSuggestions: false,
+            autocorrect: false,
+            decoration: const InputDecoration(
+              hintText: 'pAssword',
+            ),
+          ),
           TextButton(
             onPressed: () async {
               final email = _email.text;
@@ -78,7 +84,7 @@ class RegisterViewState extends State<RegisterView> {
               } on GenericAuthException {
                 await showErrorDialog(
                   context,
-                  'Failed to register due to an unkown error',
+                  'Failed to register due to an unkown error. LOL. TOUCH SOME KIDS TO GET ON THE SEX OFFENDER REGISTER',
                 );
               }
             },

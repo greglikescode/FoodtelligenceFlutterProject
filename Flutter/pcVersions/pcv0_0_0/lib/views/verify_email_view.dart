@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:foodtelligence/constants/routes.dart';
 import 'package:foodtelligence/services/auth/auth_service.dart';
-import '../constants/routes.dart';
 
 class VerifyEmailView extends StatefulWidget {
   const VerifyEmailView({super.key});
@@ -24,7 +24,7 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
               'Email not sent??? CLICK HERE TO RESEND THE EMAIL MY BRUDDA :D'),
           TextButton(
             onPressed: () async {
-              AuthService.firebase().sendEmailVerification();
+              await AuthService.firebase().sendEmailVerification();
             },
             child: const Text('Send email verification'),
           ),

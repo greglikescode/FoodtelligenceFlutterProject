@@ -1,6 +1,6 @@
+import 'package:foodtelligence/services/auth/auth_provider.dart';
+import 'package:foodtelligence/services/auth/auth_user.dart';
 import 'package:foodtelligence/services/auth/firebase_auth_provider.dart';
-import 'auth_provider.dart';
-import 'auth_user.dart';
 
 class AuthService implements AuthProvider {
   final AuthProvider provider;

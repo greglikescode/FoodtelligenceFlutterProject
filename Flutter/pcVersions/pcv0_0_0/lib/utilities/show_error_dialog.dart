@@ -15,7 +15,7 @@ Future<void> showErrorDialog(
               onPressed: () {
                 Navigator.of(context).pop();
               },
-              child: const Text('ugh')),
+              child: const Text('dah')),
         ],
       );
     },

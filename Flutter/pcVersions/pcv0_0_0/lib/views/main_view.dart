@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:foodtelligence/constants/routes.dart';
+import 'package:foodtelligence/enums/menu_action.dart';
 import 'package:foodtelligence/services/auth/auth_service.dart';
-import '../constants/routes.dart';
-import '../enums/menu_action.dart';
 
 class MainView extends StatefulWidget {
   const MainView({super.key});
