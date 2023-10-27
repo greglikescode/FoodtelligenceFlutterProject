@@ -33,7 +33,7 @@ class RegisterViewState extends State<RegisterView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Sex Offender Register!'),
+        title: const Text('Register'),
       ),
       body: Column(
         children: [
@@ -43,7 +43,7 @@ class RegisterViewState extends State<RegisterView> {
             autocorrect: false,
             keyboardType: TextInputType.emailAddress,
             decoration: const InputDecoration(
-              hintText: 'top GEmail',
+              hintText: 'Email',
             ),
           ),
           TextField(
@@ -52,7 +52,7 @@ class RegisterViewState extends State<RegisterView> {
             enableSuggestions: false,
             autocorrect: false,
             decoration: const InputDecoration(
-              hintText: 'pAssword',
+              hintText: 'Password',
             ),
           ),
           TextButton(
@@ -69,22 +69,22 @@ class RegisterViewState extends State<RegisterView> {
               } on WeakPasswordAuthException {
                 await showErrorDialog(
                   context,
-                  '"Password needs to hit the gym, its weak." - probably Arnold',
+                  'Weak Password',
                 );
               } on EmailAlreadyInUseAuthException {
                 await showErrorDialog(
                   context,
-                  'Dude, that emails already being used. You\'ll have to contact support if that\'s a problem...',
+                  'That email is already being used. You\'ll have to contact support if that\'s a problem...',
                 );
               } on InvalidEmailAuthException {
                 await showErrorDialog(
                   context,
-                  'Email is invalid, noob.',
+                  'Email is invalid',
                 );
               } on GenericAuthException {
                 await showErrorDialog(
                   context,
-                  'Failed to register due to an unkown error. LOL. TOUCH SOME KIDS TO GET ON THE SEX OFFENDER REGISTER',
+                  'Failed to register due to an unkown error.',
                 );
               }
             },
@@ -97,7 +97,7 @@ class RegisterViewState extends State<RegisterView> {
                 (route) => false,
               );
             },
-            child: const Text('Already Registered? LOGIN BUDDY!!!!!!!!!'),
+            child: const Text('Already Registered? Log in Here!'),
           )
         ],
       ),

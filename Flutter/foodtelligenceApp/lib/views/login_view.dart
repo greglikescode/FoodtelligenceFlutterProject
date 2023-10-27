@@ -33,7 +33,7 @@ class _LoginViewState extends State<LoginView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Pogin\''),
+        title: const Text('Log in'),
       ),
       body: Column(
         children: [
@@ -42,13 +42,13 @@ class _LoginViewState extends State<LoginView> {
               enableSuggestions: false,
               autocorrect: false,
               keyboardType: TextInputType.emailAddress,
-              decoration: const InputDecoration(hintText: 'top GEmail')),
+              decoration: const InputDecoration(hintText: 'Email')),
           TextField(
               controller: _password,
               obscureText: true,
               enableSuggestions: false,
               autocorrect: false,
-              decoration: const InputDecoration(hintText: 'pAssword')),
+              decoration: const InputDecoration(hintText: 'Password')),
           TextButton(
             onPressed: () async {
               final email = _email.text;
@@ -76,12 +76,12 @@ class _LoginViewState extends State<LoginView> {
               } on UserNotFoundAuthException {
                 await showErrorDialog(
                   context,
-                  'User doesn\'t exist!!!!!!!!!!!!!!',
+                  'User Not Found',
                 );
               } on WrongPasswordAuthException {
                 await showErrorDialog(
                   context,
-                  '"Incorrect Password bitch!" - Jesse',
+                  'Incorrect Password',
                 );
               } on GenericAuthException {
                 await showErrorDialog(
@@ -99,8 +99,7 @@ class _LoginViewState extends State<LoginView> {
                 (route) => false,
               );
             },
-            child: const Text(
-                'Not registered yet? Register here for free V-Bucks!!!'),
+            child: const Text('Not registered yet? Register here!'),
           )
         ],
       ),

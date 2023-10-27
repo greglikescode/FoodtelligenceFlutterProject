@@ -14,14 +14,13 @@ class _VerifyEmailViewState extends State<VerifyEmailView> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('Verify Bromail'),
+        title: const Text('Verify Email'),
       ),
       body: Column(
         children: [
           const Text(
-              'We\'ve sent you an email verification already steez. Hit da link to verify!!!!'),
-          const Text(
-              'Email not sent??? CLICK HERE TO RESEND THE EMAIL MY BRUDDA :D'),
+              'We\'ve sent you an email verification already. Click link to verify!'),
+          const Text('Email not sent? Click here to resend'),
           TextButton(
             onPressed: () async {
               await AuthService.firebase().sendEmailVerification();
