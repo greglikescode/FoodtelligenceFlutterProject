@@ -16,6 +16,10 @@ import 'dart:developer' as devtools
 // one more thing....
 // Using the stack overflow answer!
 
+// LETS GO!!!! to change the user on git you just do
+// git config --global user.name "username"
+// git config --global user.email "email"
+
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(
