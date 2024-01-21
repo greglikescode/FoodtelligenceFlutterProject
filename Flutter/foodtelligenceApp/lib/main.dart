@@ -3,7 +3,7 @@ import 'package:foodtelligence/constants/routes.dart';
 import 'package:foodtelligence/services/auth/auth_service.dart';
 import 'package:foodtelligence/views/login_view.dart';
 import 'package:foodtelligence/views/notes/main_view.dart';
-import 'package:foodtelligence/views/notes/new_note_view.dart';
+import 'package:foodtelligence/views/notes/create_update_note_view.dart';
 import 'package:foodtelligence/views/register_view.dart';
 import 'package:foodtelligence/views/verify_email_view.dart';
 import 'dart:developer' as devtools
@@ -27,7 +27,7 @@ void main() {
         registerRoute: (context) => const RegisterView(),
         mainRoute: (context) => const MainView(),
         verifyEmailRoute: (context) => const VerifyEmailView(),
-        newNoteRoute: (context) => const NewNoteView(),
+        createOrUpdateNoteRoute: (context) => const CreateUpdateNoteView(),
       },
     ),
   );

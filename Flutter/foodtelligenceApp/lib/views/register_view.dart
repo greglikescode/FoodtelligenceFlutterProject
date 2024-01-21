@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:foodtelligence/constants/routes.dart';
 import 'package:foodtelligence/services/auth/auth_exceptions.dart';
 import 'package:foodtelligence/services/auth/auth_service.dart';
-import 'package:foodtelligence/utilities/show_error_dialog.dart';
+
+import '../utilities/dialogs/error_dialog.dart';
 
 class RegisterView extends StatefulWidget {
   const RegisterView({super.key});
