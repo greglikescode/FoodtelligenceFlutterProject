@@ -10,16 +10,6 @@ import 'dart:developer' as devtools
     show
         log; // Now you have to say devtools.log to get the log function from dart B)
 
-// greglikescode commit
-// What the hell, it was my uni account again
-// Last time, then I will make this an issue for another day
-// one more thing....
-// Using the stack overflow answer!
-
-// LETS GO!!!! to change the user on git you just do
-// git config --global user.name "username"
-// git config --global user.email "email"
-
 void main() {
   WidgetsFlutterBinding.ensureInitialized();
   runApp(

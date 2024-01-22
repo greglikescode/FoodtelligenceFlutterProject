@@ -10,6 +10,8 @@ class NotesService {
 // cache of where notes are stored
   List<DatabaseNote> _notes = [];
 
+  DatabaseUser? _user;
+
   static final NotesService _shared = NotesService._sharedInstance();
   NotesService._sharedInstance() {
     _notesStreamController = StreamController<List<DatabaseNote>>.broadcast(
@@ -25,12 +27,19 @@ class NotesService {
 
   Stream<List<DatabaseNote>> get allNotes => _notesStreamController.stream;
 
-  Future<DatabaseUser> getOrCreateUser({required String email}) async {
+  Future<DatabaseUser> getOrCreateUser({
+    required String email,
+    bool setAsCurrentUser = true,
+  }) async {
     try {
       final user = await getUser(email: email);
+      if (setAsCurrentUser) {
+        _user = user;
+      }
       return user;
     } on CouldNotFindUser {
       final createdUser = await createUser(email: email);
+
       return createdUser;
     } catch (e) {
       rethrow;
