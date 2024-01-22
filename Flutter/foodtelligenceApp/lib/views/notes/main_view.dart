@@ -6,6 +6,8 @@ import 'package:foodtelligence/services/crud/notes_service.dart';
 import 'package:foodtelligence/views/notes/notes_list_view.dart';
 import '../../utilities/dialogs/logout_dialog.dart';
 
+// Hello! I am a change in main view
+
 class MainView extends StatefulWidget {
   const MainView({super.key});
 
